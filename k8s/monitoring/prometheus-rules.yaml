@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+  namespace: url-shortener
+data:
+  rules.yml: |
+    groups:
+      - name: url-shortener-alerts
+        rules:
+          - alert: AppPodDown
+            expr: absent(up{job="url-shortener"}) or count(up{job="url-shortener"} == 1) == 0
+            for: 1m
+            labels:
+              severity: critical
+            annotations:
+              summary: "URL shortener has no running pods"
+          - alert: HighRedirectRate
+            expr: rate(total_redirects_total[1m]) > 0.5
+            labels:
+              severity: warning
+            annotations:
+              summary: "Redirect rate is unusually high"

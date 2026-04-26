@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-config
+  namespace: url-shortener
+data:
+  alertmanager.yml: |
+    route:
+      group_by: ['alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+      receiver: 'webhook'
+    receivers:
+      - name: 'webhook'
+        webhook_configs:
+          - url: 'https://webhook.site/9f0b5b22-3797-461a-ab2c-b4039c296130'
