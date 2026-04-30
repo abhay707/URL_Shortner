@@ -12,7 +12,7 @@ This project is a minimal URL shortener API built with FastAPI and Redis, design
                     v (HTTP 8000)
            +--------+--------+      (Storage)     +-------+
            |  FastAPI App    | <----------------> | Redis |
-           +--------+--------+                    +-------+
+           +--------+--------+                      +-------+
                     |
                     | (Scrapes /metrics)
                     v

@@ -43,6 +43,7 @@ HTML_CONTENT = """
         .blob {
             position: absolute; filter: blur(80px); z-index: -1; opacity: 0.6;
             animation: float 10s infinite ease-in-out alternate;
+            will-change: transform;
         }
         .blob-1 { top: -10%; left: -10%; width: 400px; height: 400px; background: #8b5cf6; }
         .blob-2 { bottom: -10%; right: -10%; width: 500px; height: 500px; background: #3b82f6; animation-delay: -5s; }
@@ -53,7 +54,7 @@ HTML_CONTENT = """
             padding: 3rem; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
             width: 100%; max-width: 480px; text-align: center;
-            transform: translateY(0); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(0); transition: box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.1s ease-out;
             z-index: 10;
         }
         .container:hover { box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1); }
